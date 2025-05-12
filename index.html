@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Weri - Tienda</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BARRA SUPERIOR -->
+  <div class="navbar">
+    <img src="imagenes/close2.jpg" alt="Logo Weri">
+    <div class="carrito">🛒 Carrito</div>
+  </div>
+
+  <!-- PRODUCTOS -->
+  <div class="productos">
+    <div class="producto">
+      <img src="imagenes/pelota.jpg.webp" alt="Pelota">
+      <div class="producto-info">
+        <h3>Pelota vintage</h3>
+        <p>$49.990</p>
+        <button onclick="agregarAlCarrito('Pelota vintage')">Agregar al carrito</button>
+      </div>
+    </div>
+
+    <div class="producto">
+      <img src="imagenes/remera.jpg.jpeg" alt="Remera">
+      <div class="producto-info">
+        <h3>Remera I ❤️ Trans</h3>
+        <p>$28.400</p>
+        <button onclick="agregarAlCarrito('Remera I ❤️ Trans')">Agregar al carrito</button>
+      </div>
+    </div>
+
+    <div class="producto">
+      <img src="imagenes/zapatillas.jpg" alt="Zapatillas">
+      <div class="producto-info">
+        <h3>Zapatillas Muy Rapidas</h3>
+        <p>$85.900</p>
+        <button onclick="agregarAlCarrito('Zapatillas Weri')">Agregar al carrito</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function agregarAlCarrito(producto) {
+      alert(`Agregaste "${producto}" al carrito.`);
+    }
+  </script>
+
+</body>
+</html>
