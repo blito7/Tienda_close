@@ -14,14 +14,22 @@
     <div class="carrito">🛒 Carrito</div>
   </div>
 
+  <!-- CARRITO DESPLEGABLE -->
+  <div class="carrito-lista" id="carritoLista">
+    <h4>Carrito:</h4>
+    <ul id="listaProductos"></ul>
+    <p id="totalCarrito">Total: $0</p>
+    <button id="vaciarCarrito">Vaciar carrito</button>
+  </div>
+
   <!-- PRODUCTOS -->
   <div class="productos">
     <div class="producto">
       <img src="imagenes/pelota.jpg.webp" alt="Pelota">
       <div class="producto-info">
         <h3>Pelota vintage</h3>
-        <p>$49.990</p>
-        <button onclick="agregarAlCarrito('Pelota vintage')">Agregar al carrito</button>
+        <p>$49990</p>
+        <button onclick="agregarAlCarrito('Pelota vintage', 49990)">Agregar al carrito</button>
       </div>
     </div>
 
@@ -29,8 +37,8 @@
       <img src="imagenes/remera.jpg.jpeg" alt="Remera">
       <div class="producto-info">
         <h3>Remera I ❤️ Trans</h3>
-        <p>$28.400</p>
-        <button onclick="agregarAlCarrito('Remera I ❤️ Trans')">Agregar al carrito</button>
+        <p>$28400</p>
+        <button onclick="agregarAlCarrito('Remera I ❤️ Trans', 28400)">Agregar al carrito</button>
       </div>
     </div>
 
@@ -38,16 +46,63 @@
       <img src="imagenes/zapatillas.jpg" alt="Zapatillas">
       <div class="producto-info">
         <h3>Zapatillas Muy Rapidas</h3>
-        <p>$85.900</p>
-        <button onclick="agregarAlCarrito('Zapatillas Weri')">Agregar al carrito</button>
+        <p>$85900</p>
+        <button onclick="agregarAlCarrito('Zapatillas Muy Rapidas', 85900)">Agregar al carrito</button>
       </div>
     </div>
   </div>
 
+  <!-- SCRIPT -->
   <script>
-    function agregarAlCarrito(producto) {
-      alert(`Agregaste "${producto}" al carrito.`);
+    const carritoLista = document.getElementById("carritoLista");
+    const listaProductos = document.getElementById("listaProductos");
+    const totalCarrito = document.getElementById("totalCarrito");
+    const botonVaciar = document.getElementById("vaciarCarrito");
+
+    let productosEnCarrito = [];
+
+    function agregarAlCarrito(nombre, precio) {
+      productosEnCarrito.push({ nombre, precio });
+      actualizarCarrito();
     }
+
+    function eliminarDelCarrito(index) {
+      productosEnCarrito.splice(index, 1);
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      listaProductos.innerHTML = "";
+      let total = 0;
+
+      productosEnCarrito.forEach((prod, index) => {
+        total += prod.precio;
+        const li = document.createElement("li");
+        li.textContent = `${prod.nombre} - $${prod.precio.toLocaleString()}`;
+
+        const botonEliminar = document.createElement("button");
+        botonEliminar.textContent = "❌";
+        botonEliminar.classList.add("eliminar");
+        botonEliminar.onclick = () => eliminarDelCarrito(index);
+
+        li.appendChild(botonEliminar);
+        listaProductos.appendChild(li);
+      });
+
+      totalCarrito.textContent = `Total: $${total.toLocaleString()}`;
+    }
+
+    document.querySelector(".carrito").addEventListener("click", () => {
+      carritoLista.style.display =
+        carritoLista.style.display === "none" || carritoLista.style.display === ""
+          ? "block"
+          : "none";
+    });
+
+    botonVaciar.addEventListener("click", () => {
+      productosEnCarrito = [];
+      actualizarCarrito();
+    });
   </script>
 
 </body>

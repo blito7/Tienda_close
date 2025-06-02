@@ -74,3 +74,67 @@ button {
 button:hover {
   background-color: #333;
 }
+
+/* CARRITO DESPLEGABLE */
+.carrito-lista {
+  background-color: white;
+  position: absolute;
+  right: 30px;
+  top: 70px;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.carrito-lista h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.carrito-lista ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.carrito-lista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.carrito-lista .eliminar {
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* TOTAL Y BOTON VACIAR */
+.carrito-lista p {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#vaciarCarrito {
+  background-color: #c0392b;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+#vaciarCarrito:hover {
+  background-color: #e74c3c;
+}
